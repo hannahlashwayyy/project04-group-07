@@ -1,0 +1,36 @@
+h1, h2, h3 {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+p, body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+/* Styling the main navigation bar */
+.navbar.custom-navbar {
+    background-color: hwb(304 34% 21%) !important; /* Main navbar background */
+    height: 85px !important; /* Main navbar height */
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/* Styling the second, smaller navigation bar */
+.navbar.custom-navbar.smaller-navbar {
+    background-color: #bdd3e9 !important; /* Lighter background for second navbar */
+    height: 60px !important; /* Smaller height */
+}
+
+/* Customizing text for the second navbar */
+.navbar.custom-navbar.smaller-navbar .nav-link {
+    font-size: 1.2em !important; /* Smaller text */
+    font-family: 'Roboto', sans-serif !important;
+    color: #333333 !important;
+}
+
+/* Drop-down menu styling */
+.navbar.custom-navbar.smaller-navbar .dropdown-menu {
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #bdd3e9 !important;
+}
+

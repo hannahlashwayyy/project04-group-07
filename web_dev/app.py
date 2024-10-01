@@ -7,7 +7,7 @@ app.config[] = 0
 
 modelHelper = ModelHelper() 
 
-# Route to render index.html template using data from Mongo
+# Route to render index.html template 
 @app.route("/")
 def home():
     # Return template and data
@@ -35,14 +35,16 @@ def make_predictions():
     High_Blood_Pressure = content["HighBP"]
     High_Cholesterol = content["HighChol"]
     Cholesterol_Check = content["CholCheck"]
-    Smoker = content["Smoker"]
+    Heavy_Alcohol_Consumption = content["HeavyAlcoholComsup"]
     Stroke = content["Stroke"]
     Heart_Disease_or_Attack_History = content["HeartDiseaseorAttack"]
-    #can add more or less 
+    General_Health = content["GenHlth"]
+    Physical_Health = ["PhysHlth"]
+
     
 
 
-    preds = modelHelper.makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol, Cholesterol_Check, Smoker, Stroke, Heart_Disease_or_Attack_History)
+    preds = modelHelper.makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol, Cholesterol_Check, Heavy_Alcohol_Consumption, Stroke, Heart_Disease_or_Attack_History, General_Health, Physical_Health)
     return(jsonify({"ok": True, "prediction": str(preds)}))
 
 
