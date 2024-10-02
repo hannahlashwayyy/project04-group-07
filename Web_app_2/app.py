@@ -28,6 +28,11 @@ def make_predictions():
     content = request.json["data"]
     print(content)
 
+    required_keys = ["Sex", "age", "BMI", "HighBP", "HighChol", "CholCheck", "HeavyAlcoholConsump", "Stroke", "HeartDiseaseorAttack", "GenHlth", "PhysHlth", "DiffWalk"]
+    for key in required_keys:
+        if key not in content:
+            return jsonify({"error": f"Missing key: {key}"}), 400
+
     # parse
     sex = content["Sex"]
     age = float(content["age"])
@@ -39,8 +44,8 @@ def make_predictions():
     Stroke = content["Stroke"]
     Heart_Disease_or_Attack_History = content["HeartDiseaseorAttack"]
     General_Health = content["GenHlth"]
-    Physical_Health = ["PhysHlth"]
-    Difficulty_Walking = ["DiffWalk"]
+    Physical_Health = content["PhysHlth"]
+    Difficulty_Walking = content["DiffWalk"]
     
 
 

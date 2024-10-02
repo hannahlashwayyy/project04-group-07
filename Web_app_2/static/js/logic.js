@@ -24,7 +24,7 @@ function makePredictions() {
     var PhysHlth = $("#PhysHlth").val();
     var DiffWalk = $("#DiffWalk").val();
     var Sex = $("#Sex").val();
-    var Age = $("#Age").val();
+    var Age = $("#age").val();
 
 
     // check if inputs are valid
