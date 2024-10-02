@@ -3,7 +3,7 @@ from modelHelper import ModelHelper
 
 #create Flask instance
 app = Flask(__name__)
-app.config[] = 0
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 modelHelper = ModelHelper() 
 

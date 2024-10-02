@@ -6,29 +6,35 @@ class ModelHelper():
     def __init__(self):
         pass
 
-    def makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol, Cholesterol_Check, Heavy_Alcohol_Consumption, Stroke, Heart_Disease_or_Attack_History, General_Health, Physical_Health):
+    def makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol, Cholesterol_Check, Heavy_Alcohol_Consumption, Stroke, Heart_Disease_or_Attack_History, General_Health, Physical_Health, Difficulty_Walking):
         # create dataframe of one row for inference
         df = pd.DataFrame()
-        df["Sex"] = [sex]
-        df["Age"] = [age]
-        df["BMI"] = [BMI]
-        df["High_BP"] = [High_Blood_Pressure]
+        df["HighBP"] = [High_Blood_Pressure]
         df["HighChol"] = [High_Cholesterol]
-        df["CHolCheck"] = [Cholesterol_Check]
-        df["HvyAlcoholConsump"] = [Heavy_Alcohol_Consumption]
+        df["CholCheck"] = [Cholesterol_Check]
+        df["BMI"] = [BMI]
         df["Stroke"] = [Stroke]
         df["HeartDiseaseorAttack"] = [Heart_Disease_or_Attack_History]
+        df["HvyAlcoholConsump"] = [Heavy_Alcohol_Consumption]
         df["GenHlth"] = [General_Health]
-        df["HeartDiseaseorAttack"] = [Heart_Disease_or_Attack_History]
         df["PhysHlth"] = [Physical_Health]
-      
+        df["DiffWalk"] = [Difficulty_Walking]
+        df["Sex"] = [sex]
+        df["Age"] = [age]
+    
+         #scaler
+        scaler = pickle.load(open("diabetes_scaler.h5", 'rb'))
+        scaled_data = scaler.transform(df.loc[:, ["BMI", "PhysHlth"]])
+        df_scaled = pd.DataFrame(scaled_data, columns=["BMI", "PhysHlth"])
+    
+        #replace
+        df["BMI"] = df_scaled.BMI
+        df["PhysHlth"] = df_scaled.PhysHlth
         
 
         # model
-        model = pickle.load(open("INSERT_PIPELINE_H5_HERE", 'rb'))
+        model = pickle.load(open("diabetes_model.h5", 'rb'))
 
-        # columns in order
-        df = df.loc[:, ['HighBP', 'HighChol', 'CholCheck', 'BMI', 'Smoker', 'Stroke', 'HeartDiseaseorAttack', 'Sex', 'Age']]
 
         preds = model.predict_proba(df)
         return(preds[0][1])
