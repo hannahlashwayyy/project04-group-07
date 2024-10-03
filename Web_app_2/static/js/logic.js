@@ -19,7 +19,7 @@ function makePredictions() {
     var BMI = $("#BMI").val();
     var Stroke = $("#Stroke").val();
     var HeartDiseaseorAttack = $("#HeartDiseaseorAttack").val();
-    var HvyAlcoholConsump = $("#HvyAlcoholConsump").val();
+    var HeavyAlcoholConsump = $("#HeavyAlcoholConsump").val();
     var GenHlth = $("#GenHlth").val();
     var PhysHlth = $("#PhysHlth").val();
     var DiffWalk = $("#DiffWalk").val();
@@ -37,7 +37,7 @@ function makePredictions() {
         "BMI": BMI,
         "Stroke": Stroke,
         "HeartDiseaseorAttack": HeartDiseaseorAttack,
-        "HvyAlcoholConsump": HvyAlcoholConsump,
+        "HeavyAlcoholConsump": HeavyAlcoholConsump,
         "GenHlth": GenHlth,
         "PhysHlth": PhysHlth,
         "DiffWalk": DiffWalk,
@@ -50,23 +50,13 @@ function makePredictions() {
         type: "POST",
         url: "/makePredictions",
         contentType: 'application/json;charset=UTF-8',
-        data: JSON.stringify({ "data": payload }),
+        data: JSON.stringify(payload),  // Send the payload directly as raw JSON
         success: function(returnedData) {
-            // print it
             console.log(returnedData);
-            var prob = parseFloat(returnedData["prediction"]);
-
-            //if (prob > 0.5) {
-               // $("#output").text(`You Survived with probability ${prob}!`);
-            //} else {
-              //  $("#output").text(`You did not survive with probability ${prob}, sorry. :(`);
-           // }
-
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
         }
     });
-
-}
+}   

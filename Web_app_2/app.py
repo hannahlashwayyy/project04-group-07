@@ -21,36 +21,53 @@ def about_us():
 @app.route("/tableau")
 def tableau():
     # Return template and data
-    return render_template("tableau2.html")
+    return render_template("tableau_hannah.html")
 
 @app.route("/makePredictions", methods=["POST"])
 def make_predictions():
-    content = request.json["data"]
-    print(content)
+    try:
+        # Access the raw JSON payload
+        content = request.json  
+        print("Received JSON:", content)
 
-    required_keys = ["Sex", "age", "BMI", "HighBP", "HighChol", "CholCheck", "HeavyAlcoholConsump", "Stroke", "HeartDiseaseorAttack", "GenHlth", "PhysHlth", "DiffWalk"]
-    for key in required_keys:
-        if key not in content:
-            return jsonify({"error": f"Missing key: {key}"}), 400
+        # Define the required keys
+        required_keys = ["Sex", "age", "BMI", "HighBP", "HighChol", "CholCheck", 
+                 "HeavyAlcoholConsump",  # Match this with the incoming key
+                 "Stroke", "HeartDiseaseorAttack", "GenHlth", 
+                 "PhysHlth", "DiffWalk"]
 
-    # parse
-    sex = content["Sex"]
-    age = float(content["age"])
-    BMI = float(content["BMI"])
-    High_Blood_Pressure = content["HighBP"]
-    High_Cholesterol = content["HighChol"]
-    Cholesterol_Check = content["CholCheck"]
-    Heavy_Alcohol_Consumption = content["HeavyAlcoholConsump"]
-    Stroke = content["Stroke"]
-    Heart_Disease_or_Attack_History = content["HeartDiseaseorAttack"]
-    General_Health = content["GenHlth"]
-    Physical_Health = content["PhysHlth"]
-    Difficulty_Walking = content["DiffWalk"]
-    
+        # Validate the presence of all required keys in the incoming JSON payload
+        for key in required_keys:
+            if key not in content:
+                return jsonify({"error": f"Missing key: {key}"}), 400
 
+        # parse
+        sex = content["Sex"]
+        age = float(content["age"])
+        BMI = float(content["BMI"])
+        High_Blood_Pressure = content["HighBP"]
+        High_Cholesterol = content["HighChol"]
+        Cholesterol_Check = content["CholCheck"]
+        Heavy_Alcohol_Consumption = content["HeavyAlcoholConsump"]
+        Stroke = content["Stroke"]
+        Heart_Disease_or_Attack_History = content["HeartDiseaseorAttack"]
+        General_Health = content["GenHlth"]
+        Physical_Health = content["PhysHlth"]
+        Difficulty_Walking = content["DiffWalk"]
+        
+        # Call the model helper function to make predictions
+        preds = modelHelper.makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol, 
+                                            Cholesterol_Check, Heavy_Alcohol_Consumption, Stroke, 
+                                            Heart_Disease_or_Attack_History, General_Health, 
+                                            Physical_Health, Difficulty_Walking)
 
-    preds = modelHelper.makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol, Cholesterol_Check, Heavy_Alcohol_Consumption, Stroke, Heart_Disease_or_Attack_History, General_Health, Physical_Health, Difficulty_Walking)
-    return(jsonify({"ok": True, "prediction": str(preds)}))
+        # Return the prediction result as JSON
+        return jsonify({"ok": True, "prediction": str(preds)})
+
+    except Exception as e:
+        # Log any errors for debugging
+        print(f"Error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 
 @app.after_request

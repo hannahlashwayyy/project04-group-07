@@ -15,7 +15,7 @@ class ModelHelper():
         df["BMI"] = [BMI]
         df["Stroke"] = [Stroke]
         df["HeartDiseaseorAttack"] = [Heart_Disease_or_Attack_History]
-        df["HvyAlcoholConsump"] = [Heavy_Alcohol_Consumption]
+        df["HeavyAlcoholConsump"] = [Heavy_Alcohol_Consumption]
         df["GenHlth"] = [General_Health]
         df["PhysHlth"] = [Physical_Health]
         df["DiffWalk"] = [Difficulty_Walking]

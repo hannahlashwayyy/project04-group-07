@@ -10,13 +10,8 @@
     <link rel="stylesheet" href="../static/css/style.css">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery-3.6.0.min.js"></script> -->
     <!-- JS -->
     <script type="text/javascript" src="static/js/logic.js"></script>
-
-     <!-- Installing for drop-down menu  -->
-    <!-- jQuery (required for Bootstrap JS) -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
 
     <!-- Popper.js (required for Bootstrap dropdowns) -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -27,43 +22,43 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     
-    
 </head>
 
 <body>
     <!-- Main Navigation Bar -->
-       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="height: 100px; font-family: 'Archivo Black', sans-serif">
-           <a class="navbar-brand" href="../templates/index.html" style="font-size: 3em; color: rgb(255, 255, 255);">Diabetes Predictor</a>
-           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-           </button>
-       </nav>
-   
-       <!-- Second, Smaller Navigation Bar -->
-       <nav class="navbar navbar-expand-lg navbar-light bg-light smaller-navbar" style="height: 80px; background-color: #a1d5c9;">
-           <div class="collapse navbar-collapse" id="secondNavbar">
-               <ul class="navbar-nav mr-auto">
-                   <li class="nav-item dropdown">
-                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.5em; color: #333333; font-family: 'Roboto', sans-serif;">
-                           Dashboards
-                       </a>
-                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                           <a class="dropdown-item" href="../templates/tableau_hannah.html" style="font-size: 1em; font-family: 'roboto', sans-serif; color: #333333; padding: 10px 20px;">Dashboard 1</a>
-                           <a class="dropdown-item" href="../templates/tableau_thripura.html" style="font-size: 1em; font-family: 'roboto', sans-serif; color: #333333; padding: 10px 20px;">Dashboard 2</a>
-                       </div>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link" href="../templates/about_us.html" style="font-size: 1.5em; font-family: 'Roboto', sans-serif; color: #333333;">About Us</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link" href="../templates/works_cited.html" style="font-size: 1.5em; font-family: 'Roboto', sans-serif; color: #333333;">Works Cited</a>
-                   </li>
-               </ul>
-           </div>
-       </nav>
-   
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="height: 100px; font-family: 'Archivo Black', sans-serif">
+        <a class="navbar-brand" href="../templates/index.html" style="font-size: 3em; color: rgb(255, 255, 255);">Diabetes Predictor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <!-- Second, Smaller Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light smaller-navbar" style="height: 80px; background-color: #a1d5c9;">
+        <div class="collapse navbar-collapse" id="secondNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.5em; color: #333333; font-family: 'Roboto', sans-serif;">
+                        Dashboards
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../templates/tableau_hannah.html" style="font-size: 1em; font-family: 'roboto', sans-serif; color: #333333; padding: 10px 20px;">Dashboard 1</a>
+                        <a class="dropdown-item" href="../templates/tableau_thripura.html" style="font-size: 1em; font-family: 'roboto', sans-serif; color: #333333; padding: 10px 20px;">Dashboard 2</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../templates/about_us.html" style="font-size: 1.5em; font-family: 'Roboto', sans-serif; color: #333333;">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../templates/works_cited.html" style="font-size: 1.5em; font-family: 'Roboto', sans-serif; color: #333333;">Works Cited</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <hr style="color:lightgray; border-width: 1px;">
+
+    <!-- General Information Section -->
     <div class="container">
         <div class="card border-primary mb-3" style="max-width: 80rem;">
             <div class="card-header">General Information</div>
@@ -99,12 +94,14 @@
                             <label class="col-form-label" for="BMI">BMI</label>
                             <input type="number" class="form-control" value="25.50" id="BMI">
                         </div>
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Physical Health Section -->
+    <div class="container">
         <div class="card border-primary mb-3" style="max-width: 80rem;">
             <div class="card-header">Physical Health</div>
             <div class="card-body">
@@ -121,8 +118,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label" for="PhysHlth">During the past 30 days, for about how many days did pain or injury make it hard for you to do your usual activities 
-                                (i.e. self-care, work, or recreation)?</label>
+                            <label class="col-form-label" for="PhysHlth">During the past 30 days, for about how many days did pain or injury make it hard for you to do your usual activities?</label>
                             <input type="text" class="form-control" value="0" id="PhysHlth">
                         </div>               
                         <div class="form-group">
@@ -135,7 +131,10 @@
                     </div>  
                 </div>           
             </div>
-        </div>                       
+        </div>
+    </div>
+
+    <!-- Medical History Section -->
     <div class="container">
         <div class="card border-primary mb-3" style="max-width: 80rem;">
             <div class="card-header">Medical History</div>
@@ -164,7 +163,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label" for="Stroke">Have you had ever had a stroke?</label>
+                            <label class="col-form-label" for="Stroke">Have you ever had a stroke?</label>
                             <select id="Stroke">
                                 <option value="0">No</option>
                                 <option value="1">Yes</option>
@@ -178,31 +177,33 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label" for="HvyAlcoholConsump">How much do you drink in a week?</label>
-                            <select id="HvyAlcoholConsump">
-                                <option value="0"> For women, less than 14 drinks weekly</option>
+                            <label class="col-form-label" for="HeavyAlcoholConsump">How much do you drink in a week?</label>
+                            <select id="HeavyAlcoholConsump"> <!-- Updated ID -->
+                                <option value="0">For women, over than 14 drinks weekly</option>
                                 <option value="1">For men, over 7 drinks weekly</option>
-                                <option value="2">For women, over 14 drinks weekly</option>
+                                
                             </select>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Button Section -->
     <div class="container">
         <div class="card border-primary mb-3" style="max-width: 80rem;">
             <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-primary" id="filter">Make Prediction!</button>
-                        </div>    
-                    </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary" id="filter">Make Prediction!</button>
+                    </div>    
                 </div>
             </div>
         </div>
     </div>
+
     <hr style="color:lightgray; border-width: 3px;">
     <div class="container-fluid">
         <div class="row">
@@ -211,8 +212,6 @@
             </div>
         </div>
     </div>
-
-
     
 </body>
 
