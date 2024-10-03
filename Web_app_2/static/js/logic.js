@@ -53,10 +53,12 @@ function makePredictions() {
         data: JSON.stringify(payload),  // Send the payload directly as raw JSON
         success: function(returnedData) {
             console.log(returnedData);
+
+            $("#output").text(`Your predicted risk for diabetes is ${Math.round(100 * parseFloat(returnedData["prediction"]), 2)}%`);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
             alert("Error: " + errorThrown);
         }
     });
-}   
+}

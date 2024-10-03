@@ -18,22 +18,27 @@ def about_us():
     # Return template and data
     return render_template("about_us.html")
 
-@app.route("/tableau")
-def tableau():
+@app.route("/tableau_hannah")
+def tableau_hannah():
     # Return template and data
     return render_template("tableau_hannah.html")
+
+@app.route("/tableau_thripura")
+def tableau_thripura():
+    # Return template and data
+    return render_template("tableau_thripura.html")
 
 @app.route("/makePredictions", methods=["POST"])
 def make_predictions():
     try:
         # Access the raw JSON payload
-        content = request.json  
+        content = request.json
         print("Received JSON:", content)
 
         # Define the required keys
-        required_keys = ["Sex", "age", "BMI", "HighBP", "HighChol", "CholCheck", 
+        required_keys = ["Sex", "age", "BMI", "HighBP", "HighChol", "CholCheck",
                  "HeavyAlcoholConsump",  # Match this with the incoming key
-                 "Stroke", "HeartDiseaseorAttack", "GenHlth", 
+                 "Stroke", "HeartDiseaseorAttack", "GenHlth",
                  "PhysHlth", "DiffWalk"]
 
         # Validate the presence of all required keys in the incoming JSON payload
@@ -45,20 +50,20 @@ def make_predictions():
         sex = content["Sex"]
         age = float(content["age"])
         BMI = float(content["BMI"])
-        High_Blood_Pressure = content["HighBP"]
-        High_Cholesterol = content["HighChol"]
-        Cholesterol_Check = content["CholCheck"]
-        Heavy_Alcohol_Consumption = content["HeavyAlcoholConsump"]
-        Stroke = content["Stroke"]
-        Heart_Disease_or_Attack_History = content["HeartDiseaseorAttack"]
-        General_Health = content["GenHlth"]
-        Physical_Health = content["PhysHlth"]
-        Difficulty_Walking = content["DiffWalk"]
-        
+        High_Blood_Pressure = int(content["HighBP"])
+        High_Cholesterol = int(content["HighChol"])
+        Cholesterol_Check = int(content["CholCheck"])
+        Heavy_Alcohol_Consumption = int(content["HeavyAlcoholConsump"])
+        Stroke = int(content["Stroke"])
+        Heart_Disease_or_Attack_History = int(content["HeartDiseaseorAttack"])
+        General_Health = int(content["GenHlth"])
+        Physical_Health = int(content["PhysHlth"])
+        Difficulty_Walking = int(content["DiffWalk"])
+
         # Call the model helper function to make predictions
-        preds = modelHelper.makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol, 
-                                            Cholesterol_Check, Heavy_Alcohol_Consumption, Stroke, 
-                                            Heart_Disease_or_Attack_History, General_Health, 
+        preds = modelHelper.makePredictions(sex, age, BMI, High_Blood_Pressure, High_Cholesterol,
+                                            Cholesterol_Check, Heavy_Alcohol_Consumption, Stroke,
+                                            Heart_Disease_or_Attack_History, General_Health,
                                             Physical_Health, Difficulty_Walking)
 
         # Return the prediction result as JSON

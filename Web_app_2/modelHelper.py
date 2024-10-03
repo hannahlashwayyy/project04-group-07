@@ -16,26 +16,39 @@ class ModelHelper():
         df["BMI"] = [BMI]
         df["Stroke"] = [Stroke]
         df["HeartDiseaseorAttack"] = [Heart_Disease_or_Attack_History]
-        df["HeavyAlcoholConsump"] = [Heavy_Alcohol_Consumption]
+        df["HvyAlcoholConsump"] = [Heavy_Alcohol_Consumption]
         df["GenHlth"] = [General_Health]
         df["PhysHlth"] = [Physical_Health]
         df["DiffWalk"] = [Difficulty_Walking]
         df["Sex"] = [sex]
         df["Age"] = [age]
-    
+
          #scaler
-        scaler = pickle.load(open("diabetes_scaler.h5", 'rb'))
+        scaler = pickle.load(open("diabetes_scaler_ada.h5", 'rb'))
         scaled_data = scaler.transform(df.loc[:, ["BMI", "PhysHlth"]])
         df_scaled = pd.DataFrame(scaled_data, columns=["BMI", "PhysHlth"])
-    
+
         #replace
         df["BMI"] = df_scaled.BMI
         df["PhysHlth"] = df_scaled.PhysHlth
-        
+
+        # Re-arrange columns
+        df = df.loc[:, ['HighBP', 'HighChol', 'CholCheck', 'Stroke',
+       'HeartDiseaseorAttack', 'HvyAlcoholConsump', 'DiffWalk', 'Sex', 'BMI',
+       'PhysHlth', 'GenHlth', 'Age']]
 
         # model
-        model = pickle.load(open("diabetes_model.h5", 'rb'))
+        model = pickle.load(open("diabetes_model_ada.h5", 'rb'))
 
 
         preds = model.predict_proba(df)
         return(preds[0][1])
+
+
+
+
+
+
+
+
+
