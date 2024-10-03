@@ -28,6 +28,11 @@ def tableau_thripura():
     # Return template and data
     return render_template("tableau_thripura.html")
 
+@app.route("/works_cited")
+def works_cited():
+    # Return template and data
+    return render_template("works_cited.html")
+
 @app.route("/makePredictions", methods=["POST"])
 def make_predictions():
     try:
